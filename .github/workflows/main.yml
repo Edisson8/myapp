@@ -3,6 +3,9 @@
 # Copileft (c) by Eduard Gafurov 2022.
 #------------------------------
 name: CiCd-for-Deploy
+env:
+  APPLICATION_NAME    : "MyFlask"
+  DEPLOY_PACKAGE_NAME : "Flask_deploy_ver-${{ github.sha }}"
 
 on:
   push:
@@ -16,6 +19,12 @@ jobs:
     steps:
       - name: Print Hello Message in Testing
         run : echo "Hello World from Testing"
+        
+      - name: Execure few commands
+        run: |
+          echo "Hello Message1"
+          echo "Hello message2"
+          echo "Application name ${{ env.APPLICATION_NAME }}"
     
   my-deploy:
     runs-on: ubuntu-latest
@@ -24,3 +33,6 @@ jobs:
     steps:
       - name: Print Hello Message in Deploy
         run : echo "Hello World from Deploy"
+        
+      - name: Printing Deployment package
+        run: echo "Deploy package name is ${{ env.DEPLOY_PACKAGE_NAME }}"
