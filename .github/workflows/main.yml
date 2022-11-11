@@ -1,0 +1,25 @@
+# Github Action for deploy page
+#
+# Copileft (c) by Eduard Gafurov 2022.
+#------------------------------
+name: CiCd-for-Deploy
+
+on:
+  push:
+    branches: 
+      - main
+      
+jobs:
+  my-testing:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Print Hello Message
+      - run : echo "Hello World from Testing"
+    
+  my-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Print Hello Message
+      - run : echo "Hello World from Deploy"
